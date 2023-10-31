@@ -1,0 +1,21 @@
+.header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px 0;
+    padding: 15px;
+    .headerText {
+        color: rgba(255, 255, 255, 0.7);
+        font-style: oblique;
+        font-size: 30px;
+        padding: 10px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        .drawingPin {
+            width: 30px;
+            height: 30px;
+        }
+    }
+    .headerButton {
+        padding: 10px;
+    }
+}

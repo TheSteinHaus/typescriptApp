@@ -1,0 +1,13 @@
+.card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5px;
+    margin: 15px auto 25px;
+    background-color: #567171;
+    width: 50%;
+    .cardTitle {
+        font-size: 25px;
+        margin: 0 auto;
+    }
+}
