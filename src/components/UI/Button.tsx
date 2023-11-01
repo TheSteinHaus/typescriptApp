@@ -1,13 +1,15 @@
 import React from 'react'
 import cl from './Button.module.scss'
-import { Props } from '../addTaskMenu/AddTaskMenu';
+import { store } from '../..';
 
 interface ButtonText {
     children: string;
 }
 
-export default function Button({children} : ButtonText, onClick : Props) {
+export default function Button({children, onClickFunc} : any) {
+
+  // console.log(store.hidden)
   return (
-    <button onClick={onClick} className={cl.button_default}>{children}</button>
+    <button onClick={onClickFunc} className={cl.button_default}>{children}</button>
   )
 }

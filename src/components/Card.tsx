@@ -1,7 +1,7 @@
 import React from 'react'
 import cl from './Card.module.scss'
 import { Cards } from './types/Cards'
-import SubCards from './SubCards'
+// import SubCards from './SubCards'
 
 export default function Card({tasks} : any) {
   console.log(tasks.underCards)
@@ -9,9 +9,9 @@ export default function Card({tasks} : any) {
     <div className={cl.card}>
         <div className={cl.card_title}>{tasks.id}. {tasks.title}</div>
         <div className={cl.card_body}>{tasks.body}</div>
-        <div className={cl.under_cards}>
+        {/* <div className={cl.under_cards}>
           <SubCards underCards={tasks.underCards} />  
-        </div>
+        </div> */}
     </div>
   )
 }
