@@ -4,18 +4,18 @@
     flex-direction: column;
     margin: 10px 0;
     padding: 15px;
-    .headerText {
+    .header_text {
         color: rgba(255, 255, 255, 0.7);
         font-style: oblique;
         font-size: 30px;
         padding: 10px;
         font-family: Georgia, 'Times New Roman', Times, serif;
-        .drawingPin {
+        .drawing_pin {
             width: 30px;
             height: 30px;
         }
     }
-    .headerButton {
+    .header_button {
         padding: 10px;
     }
 }

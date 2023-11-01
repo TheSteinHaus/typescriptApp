@@ -2,12 +2,19 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 5px;
+    border-radius: 25px;
+    padding: 15px;
     margin: 15px auto 25px;
     background-color: #567171;
+    color: rgba(245, 245, 245, 0.677);
     width: 50%;
-    .cardTitle {
+    .card_title {
         font-size: 25px;
         margin: 0 auto;
+    }
+    .card_body {
+        font-size: 19px;
+        margin: 0 auto;
+        padding: 3px 0px;
     }
 }

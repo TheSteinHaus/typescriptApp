@@ -1,17 +1,17 @@
 import React from 'react'
 import cl from './Card.module.scss'
+import { Cards } from './types/Cards'
+import SubCards from './SubCards'
 
-interface TODO {
-    card : any
-}
-
-export default function Card({card} : TODO) {
-    console.log(card)
+export default function Card({tasks} : any) {
+  console.log(tasks.underCards)
   return (
     <div className={cl.card}>
-        <div className={cl.cardTitle}>{card.title}</div>
-        <div className={cl.cardBody}>{card.body}</div>
-        <div className={cl.underCards}>{card.underCards}</div>
+        <div className={cl.card_title}>{tasks.id}. {tasks.title}</div>
+        <div className={cl.card_body}>{tasks.body}</div>
+        <div className={cl.under_cards}>
+          <SubCards underCards={tasks.underCards} />  
+        </div>
     </div>
   )
 }
