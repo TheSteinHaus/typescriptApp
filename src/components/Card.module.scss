@@ -4,10 +4,11 @@
     flex-direction: column;
     border-radius: 25px;
     padding: 15px;
-    margin: 15px auto 25px;
+    margin: 0px auto 25px;
     background-color: #567171;
     color: rgba(245, 245, 245, 0.677);
     width: 50%;
+    transition: .3s all;
     .card_title {
         font-size: 25px;
         margin: 0 auto;

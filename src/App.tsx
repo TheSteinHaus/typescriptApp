@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TodoLogic from './components/TodoLogic';
 
 import todos from './components/store/todos';
@@ -8,10 +8,16 @@ import AddTaskMenu from './components/addTaskMenu/AddTaskMenu';
 import { observer } from 'mobx-react-lite';
 
 function App() {
+  const [isToggle, setIsToggle] = useState(false)
+
+  function Toggler() {
+    setIsToggle(isToggle => !isToggle)
+  }
+
   return (
     <div>
       <Header />
-      <AddTaskMenu />
+      <AddTaskMenu toggler={Toggler} />
       {todos.todoArray.map(todoItem =>
         <TodoLogic key={todoItem.id} todoItem={todoItem} />
       )}

@@ -10,6 +10,11 @@ export class UserStore implements Hide {
     }
 
     hidden = true;
+
+    changeHidden() {
+      return !this.hidden;
+    }
+
 }
 
 let userStore : UserStore;

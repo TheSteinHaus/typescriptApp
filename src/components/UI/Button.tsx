@@ -6,10 +6,10 @@ interface ButtonText {
     children: string;
 }
 
-export default function Button({children, onClickFunc} : any) {
+export default function Button({children, ...props} : any) {
 
   // console.log(store.hidden)
   return (
-    <button onClick={onClickFunc} className={cl.button_default}>{children}</button>
+    <button {...props} className={cl.button_default}>{children}</button>
   )
 }

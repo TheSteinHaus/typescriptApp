@@ -1,8 +1,12 @@
 import React from 'react'
 import cl from './Input.module.scss'
 
-export default function Input() {
+export default function Input({...props}) {
   return (
-    <input className={cl.default_input}></input>
+    <input 
+      {...props}
+      className={cl.default_input}
+      type='text' 
+    />
   )
 }

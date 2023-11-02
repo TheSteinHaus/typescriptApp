@@ -6,7 +6,7 @@ import { Context } from '..'
 
 export default function Header() {
   const {store} = useContext(Context)
-  
+
   const onClickFunc = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     store.hidden = !store.hidden
     console.log(store.hidden)
@@ -16,7 +16,7 @@ export default function Header() {
     <div className={cl.header}>
         <div className={cl.header_text}>COFFEE TODO <DrawingPinFilledIcon className={cl.drawing_pin} /></div>
         <div className={cl.header_button}>
-            <Button children={"TODO create"} onClickFunc={onClickFunc} />
+            <Button children={"TODO create"} onClick={onClickFunc} />
         </div>
     </div>
   )

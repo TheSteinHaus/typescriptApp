@@ -11,10 +11,11 @@ type TodoItemProps = {
 };
 
 const TodoLogic : FunctionComponent<TodoItemProps> = observer(( {todoItem} ) => {
-  const {id, title, isCompleted, subCards} = todoItem;
+  const {id, title, body, isCompleted, subCards} = todoItem;
 
   return (
     <>
+      <Card tasks={todoItem} />
     </>
   );
 });
