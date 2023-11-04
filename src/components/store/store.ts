@@ -22,4 +22,4 @@ export function getUserstore() {
   if (!userStore)
     userStore = new UserStore();
   return userStore;
-};
+}

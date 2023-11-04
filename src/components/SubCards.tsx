@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import cl from './SubCards.module.scss'
+import { Cards } from './types/Cards';
+import { observer } from 'mobx-react-lite';
 
-export default function SubCards(underCards : any) {
+type TodoItemProps = {
+  tasks: Cards;
+};
+
+const SubCards : FunctionComponent<TodoItemProps> = observer(({tasks}) => {
   return (
     <div className={cl.under_cards}>
-        {underCards.length !== 0 ? underCards.map((subtasks : any) =>
-            <li className={cl.subtasks}>{subtasks.body}</li>
-        ) : <div className={cl.subtasks_absent}>Subtasks are absent</div>}
+        <div>{tasks.title}</div>
+        <div>{tasks.body}</div>
     </div>
   )
-}
+})
+
+export default SubCards

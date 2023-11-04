@@ -16,6 +16,12 @@ type SearchTask = (
   array: Cards[],
 ) => Cards | null;
 
+type SearchTaskEditing = (
+  id: string,
+  array: Cards[],
+  editingTask: Cards,
+) => Cards[];
+
 type CompleteTask = (
   array: Cards[],
   state: boolean,
@@ -45,7 +51,7 @@ export const subTaskAdd : SubTaskAdd = (id, array, task) => {
   };
 
   export const recursionSearch : SearchTask = (id, array) => {
-    for (let item of array) {
+    for (const item of array) {
       if (item.id === id) {
         return item;
       }
@@ -59,6 +65,18 @@ export const subTaskAdd : SubTaskAdd = (id, array, task) => {
   
     return null;
   };
+
+  export const recursionSearchEditing : SearchTaskEditing = (id, array, editingTask) => {
+    return array.reduce((arr: Cards[], item) => {
+      if (item.id === id) {
+          arr.push(editingTask);
+      } else {
+          arr.push({...item, subCards: subTaskAdd(id, item.subCards, editingTask)});
+      }
+  
+      return arr;
+    }, []);
+  }
 
   export const recursionCompleteToggler : SubTask = (id, array) => {
     return array.reduce((arr: Cards[], item) => {

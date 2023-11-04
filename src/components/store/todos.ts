@@ -2,13 +2,17 @@ import { makeAutoObservable } from 'mobx';
 import { v4 as uuidv4 } from 'uuid';
 
 import { Cards } from '../types/Cards';
-import { recursionFilter, recursionCompleteToggler, recursionSearch, subTaskAdd } from '../utils/utils';
+import { recursionFilter, recursionCompleteToggler, recursionSearch, subTaskAdd, recursionSearchEditing } from '../utils/utils';
 
 class Todos {
-  todoArray:Cards[] = localStorage.todos ? JSON.parse(localStorage.todos) : [];
-  activeTask:Cards | null = null;
+  todoArray: Cards[] = localStorage.todos ? JSON.parse(localStorage.todos) : [];
+  activeTask: Cards | null = null;
   todoTitle = '';
   todoText = '';
+  subTitle = '';
+  subText = '';
+  editTitle = '';
+  editText = '';
 
   constructor() {
     makeAutoObservable(this)
@@ -20,6 +24,22 @@ class Todos {
 
   textHandler = (str: string) => {
     this.todoText = str;
+  }
+
+  subTitleHandle = (str: string) => {
+    this.subTitle = str;
+  }
+
+  subTextHandle = (str: string) => {
+    this.subText = str;
+  }
+
+  editTitleHandler = (str: string) => {
+    this.editTitle = str;
+  }
+
+  editTextHandler = (str: string) => {
+    this.editText = str;
   }
 
   addTask = () => {
@@ -39,20 +59,33 @@ class Todos {
   }
 
   addSubtask = (id: string) => {
-    if (this.todoTitle.trim().length) {
+    if (this.subTitle.trim().length) {
       const task = {
         id: uuidv4(),
-        title: this.todoTitle,
-        body: this.todoText,
+        title: this.subTitle,
+        body: this.subText,
         isCompleted: false,
         subCards: [],
       };
 
       this.todoArray = subTaskAdd(id, this.todoArray, task);
       localStorage.setItem('todos', JSON.stringify(this.todoArray));
-      this.todoTitle = '';
-      this.todoText = '';
+      this.subTitle = '';
+      this.subText = '';
     }
+  }
+
+  editTask = (id: string) => {
+    this.activeTask = recursionSearch(id, this.todoArray)
+    if (this.activeTask) {
+      this.editTitle !== '' && (this.activeTask.title = this.editTitle)
+      this.editText !== '' && (this.activeTask.body = this.editText)
+      recursionSearchEditing(id, this.todoArray, this.activeTask)
+      localStorage.setItem('todos', JSON.stringify(this.todoArray));
+    }
+    
+    this.editText = ''
+    this.editTitle = ''
   }
 
   removeTask = (id: string) => {
