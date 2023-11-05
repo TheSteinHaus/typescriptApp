@@ -91,7 +91,7 @@ const Card : FunctionComponent<TodoItemProps> = observer(({tasks}) => {
               <></>
               :
               <Button onClick={SetIsEdit}>
-              <Pencil2Icon className={cl.icon_edit} />
+                <Pencil2Icon className={cl.icon_edit} />
               </Button>
             }
             <Button onClick={() => todos.removeTask(tasks.id)}>

@@ -1,26 +1,19 @@
-import React, { useState } from 'react';
-import TodoLogic from './components/TodoLogic';
+import React from 'react';
 
-import todos from './components/store/todos';
-
-import Header from './components/Header';
-import AddTaskMenu from './components/addTaskMenu/AddTaskMenu';
 import { observer } from 'mobx-react-lite';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Authorization from './pages/Authorization';
+import Todo from './pages/Todo';
 
 function App() {
-  const [isToggle, setIsToggle] = useState(false)
-
-  function Toggler() {
-    setIsToggle(isToggle => !isToggle)
-  }
-
   return (
     <div>
-      <Header />
-      <AddTaskMenu toggler={Toggler} />
-      {todos.todoArray.map(todoItem =>
-        <TodoLogic key={todoItem.id} todoItem={todoItem} />
-      )}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Authorization />} />
+          <Route path="/todo" element={<Todo />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
