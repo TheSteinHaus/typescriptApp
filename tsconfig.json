@@ -23,5 +23,5 @@
   },
   "include": [
     "src"
-  ]
+, "server/src/main.ts", "server/src/app.service.ts", "server/src/app.module.ts", "server/src/app.controller.ts", "server/src/app.controller.spec.ts"  ]
 }
