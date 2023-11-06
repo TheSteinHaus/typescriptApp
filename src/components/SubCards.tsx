@@ -64,7 +64,7 @@ const SubCards : FunctionComponent<TodoItemProps> = observer(({tasks}) => {
             <Button
               children="Add Sub"
               onClick={SubTaskAddingMenu}
-              style={{backgroundColor: "#567171", width: "75%", borderRadius: "7px", padding: "8px", margin: "5px auto 0px", fontSize: "20px"}}
+              className={cl.add_sub_task_button}
             />
           </div>
         }

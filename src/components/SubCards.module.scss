@@ -34,4 +34,34 @@
             height: 15px;
         }
     }
+    .subtask_adding_menu {
+        padding: 10px;
+        border-radius: 15px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background-color: gray;
+        svg {
+            position: absolute;
+            background-color: transparent;
+            opacity: 1;
+            right: 96%;
+        }
+        button:nth-child(1) {
+            background-color: transparent;
+        }
+        button:nth-child(4) {
+            margin: 5px auto;
+            background-color: #567171;
+            width: 25%;
+        }
+        input {
+            border-radius: 10px;
+            padding: 8px;
+            outline: 0;
+            border: 0;
+            margin: 5px auto;
+            width: 50%;
+        }
+    }
 }
