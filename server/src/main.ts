@@ -1,10 +1,10 @@
 import { NestFactory } from '@nestjs/core';
-import { AuthorizationModule } from './modules/authorization.module';
+import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AuthorizationModule, {
-    cors:true
-  });
-  await app.listen(3000);
+  const PORT = process.env.PORT || 5000;
+  const app = await NestFactory.create(AppModule)
+
+  await app.listen(PORT, () => console.log(`Server started on port = ${PORT}`))
 }
 bootstrap();

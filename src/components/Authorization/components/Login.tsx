@@ -10,6 +10,7 @@ export default function Login() {
   const [login, setLogin] = useState('')
 
   function submit() {
+    console.log(login)
     axios.post('http://localhost:3000', login)
       .then(response => console.log(response.data))
   }
