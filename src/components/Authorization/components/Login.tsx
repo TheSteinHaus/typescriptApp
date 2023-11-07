@@ -21,7 +21,7 @@ export default function Login() {
         <Input
           value={login}
           onChange={(e : any) => setLogin(e.target.value)} 
-          placeholder="Login" 
+          placeholder="Email" 
         />
         <Input placeholder="Password" />
         <p className={cl.login_account_text}>Don't have an account? <Link to="/registration"><span>Click here!</span></Link></p>

@@ -8,7 +8,7 @@ interface UserCreation {
 }
 
 @Table({tableName: 'users'})
-export class Authorization extends Model<Authorization, UserCreation> {
+export class User extends Model<User, UserCreation> {
     @Column({type: DataType.STRING, unique: true, primaryKey: true})
     id: string;
 
