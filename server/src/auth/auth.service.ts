@@ -13,7 +13,7 @@ export class AuthService {
 
     async login(userDto: CreateUserDto) {
         const user = await this.validateUser(userDto)
-        return this.generateToken(user)
+        return {token: this.generateToken(user), login: user.login}
     }
 
     async registration(userDto: CreateUserDto) {
@@ -27,16 +27,14 @@ export class AuthService {
     }
 
     private async generateToken(user: User) {
-        const payload = {email: user.email, login: user.login, id: user.id}
+        const payload = {email: user.email, login: user.login}
         return {
             token: this.jwtService.sign(payload)
         }
     }
 
     private async validateUser(userDto: CreateUserDto) {
-        console.log(userDto.email)
         const user = await this.userService.getUserByEmail(userDto.email)
-        console.log(user)
         if (user) {
             const passwordEquals = await bcrypt.compare(userDto.password, user.password)
             if (passwordEquals) {

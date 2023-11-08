@@ -62,7 +62,7 @@ const SubCards : FunctionComponent<TodoItemProps> = observer(({tasks}) => {
               placeholder='Sub text...' 
             />
             <Button
-              children="Add Sub"
+              children="Add"
               onClick={SubTaskAddingMenu}
               className={cl.add_sub_task_button}
             />

@@ -5,15 +5,20 @@ import cl from './Login.module.scss'
 import Input from '../../UI/Input'
 import Button from '../../UI/Button'
 import { Link } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const [cookies, setCookie, removeCookie] = useCookies(['token', 'login'])
   
   function submit() {
     const data = {email: email, password: password}
     axios.post('http://localhost:7000/auth/login', data)
-      .then(response => console.log(response.data))
+      .then(response => {setCookie('token', response.data.token); setCookie('login', response.data.login)})
+      .then(() => window.location.replace('http://localhost:3000/todo'))
+      .catch(e => console.log(e))
   }
 
   return (
