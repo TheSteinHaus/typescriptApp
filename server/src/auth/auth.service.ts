@@ -4,6 +4,7 @@ import { CreateUserDto } from '../users/dto/create-user.dto';
 import { UsersService } from '../users/users.service';
 import * as bcrypt from 'bcryptjs'
 import { User } from '../users/users.model';
+import {v4 as uuid4} from 'uuid'
 
 @Injectable()
 export class AuthService {
@@ -22,7 +23,8 @@ export class AuthService {
             throw new HttpException('Пользователь с таким Email уже существует', HttpStatus.BAD_REQUEST)
         }
         const hashPassword = await bcrypt.hash(userDto.password, 5);
-        const user = await this.userService.createUser({...userDto, password: hashPassword})
+        const user = await this.userService.createUser({...userDto, password: hashPassword, id: uuid4()})
+        console.log(user)
         return this.generateToken(user)
     }
 

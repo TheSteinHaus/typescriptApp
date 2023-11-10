@@ -25,11 +25,13 @@ export default function Login() {
     <div className={cl.login}>
         <p className={cl.login_title}>Login</p>
         <Input
+          type='email'
           value={email}
           onChange={(e : any) => setEmail(e.target.value)} 
           placeholder="Email"
         />
         <Input
+          type='password'
           value={password}
           onChange={(e : any) => setPassword(e.target.value)}  
           placeholder="Password"

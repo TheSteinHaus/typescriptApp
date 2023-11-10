@@ -18,6 +18,7 @@ export default function Signup() {
     const data = {email: email, password: password, login: login}
     axios.post('http://localhost:7000/auth/registration', data)
       .then(response => setCookie('token', response.data))
+      .then(() => window.location.replace('http://localhost:3000'))
       .catch(e => console.log(e))
   }
 
@@ -25,16 +26,19 @@ export default function Signup() {
     <div className={cl.login}>
       <p className={cl.login_title}>SignUp</p>
       <Input 
+        type='email'
         value={email}
         onChange={(e : any) => setEmail(e.target.value)} 
         placeholder="Email" 
       />
       <Input 
+        type='text'
         value={login}
         onChange={(e : any) => setLogin(e.target.value)} 
         placeholder="Login" 
       />
       <Input 
+        type='password'
         value={password}
         onChange={(e : any) => setPassword(e.target.value)} 
         placeholder="Password" 
