@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { Cards } from '../types/Cards';
 import { recursionFilter, recursionCompleteToggler, recursionSearch, subTaskAdd, recursionSearchEditing } from '../utils/utils';
+import axios from 'axios';
 
 class Todos {
   todoArray: Cards[] = localStorage.todos ? JSON.parse(localStorage.todos) : [];
@@ -42,17 +43,25 @@ class Todos {
     this.editText = str;
   }
 
+  getTasks = () => {
+    axios.get('localhost:7000/todo/get-todo').then((data) => data.data)
+  }
+
   addTask = () => {
     if (this.todoTitle.trim().length) {
-      this.todoArray.push({
+      const todo = {
         id: uuidv4(),
         title: this.todoTitle,
         body: this.todoText,
         isCompleted: false,
         subCards: [],
-      });
+      }
+      this.todoArray.push(todo);
 
-      localStorage.setItem('todos', JSON.stringify(this.todoArray));
+      console.log()
+      axios.post('http://localhost:7000/todo/add-todo', todo)
+      .then(() => localStorage.setItem('todos', JSON.stringify(this.todoArray)))
+      .catch((e) => console.log(e))
       this.todoTitle = '';
       this.todoText = '';
     }

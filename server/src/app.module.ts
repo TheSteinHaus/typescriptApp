@@ -6,6 +6,8 @@ import { User } from './users/users.model';
 import { AuthController } from './auth/auth.controller';
 import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
+import { TodoModule } from './todo/todo.module';
+import { Todo } from './todo/todo.model';
 
 @Module({
   imports: [
@@ -19,11 +21,12 @@ import { AuthModule } from './auth/auth.module';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [User],
+      models: [User, Todo],
       autoLoadModels: true,
     }),
     UsersModule,
     AuthModule,
+    TodoModule,
   ],
   controllers: [AuthController],
   providers: [AuthService],

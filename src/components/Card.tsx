@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import cl from './Card.module.scss'
 import { Cards } from './types/Cards'
 import { CheckCircledIcon, CrossCircledIcon, Pencil2Icon, PlusCircledIcon, TrashIcon } from '@radix-ui/react-icons'
@@ -16,6 +16,10 @@ const Card : FunctionComponent<TodoItemProps> = observer(({tasks}) => {
   const [isEdit, setIsEdit] = useState(false)
   const [isSubTasksShown, setIsSubTasksShown] = useState(false)
   const [isSubTaskAddingMenu, setIsSubTaskAddingMenu] = useState(false)
+
+  // useEffect(() => {
+  //   todos.getTasks()
+  // }, [])
 
   function SetIsEdit() {
     setIsEdit(!isEdit)
